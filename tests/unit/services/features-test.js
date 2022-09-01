@@ -52,4 +52,16 @@ module('Unit | Service | features', function(hooks) {
 
     assert.deepEqual(features.get('flags'), ['someNewFeature', 'otherNewThing', 'somethingOtherThing']);
   });
+
+  test('it exposes the list of enabled flags', function(assert) {
+    let features = this.subject();
+
+    features.setup({
+      'some-new-feature': true,
+      'other-newThing': false,
+      'something.other-thing': true
+    });
+
+    assert.deepEqual(features.get('enabledFlags'), ['someNewFeature', 'somethingOtherThing']);
+  });
 });

@@ -87,4 +87,14 @@ Object.defineProperty(FeaturesService.prototype, 'flags', {
   }
 });
 
+Object.defineProperty(FeaturesService.prototype, 'enabledFlags', {
+  get() {
+    const enabledFlags = []
+    for (const flag in this._flags) {
+      if (this._flags[flag]) enabledFlags.push(flag)
+    }
+    return enabledFlags
+  }
+});
+
 export default FeaturesService;
